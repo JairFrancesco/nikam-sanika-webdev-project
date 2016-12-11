@@ -1,0 +1,30 @@
+
+
+<div class="container page">
+	
+  <div class="row">
+      <div class="col-md-12">
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input ng-model="model.widget.name" type="text" class="form-control" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input ng-model="model.widget.text" type="text" class="form-control" id="text" >
+            </div>
+            <div class="form-group">
+                <label for="size">Size</label>
+                <input ng-model="model.widget.size" type="text" class="form-control" id="size" >
+            </div>
+        </form>
+      <div class="form-group">
+        <a class="btn btn-primary btn-block btn-danger"
+           ng-click="model.deleteWidget(model.widget._id)">Delete</a>
+      </div>
+      </div>
+    </div>
+</div>
+
+
+

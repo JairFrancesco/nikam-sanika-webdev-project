@@ -1,0 +1,83 @@
+ <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="profile-header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/homepage">
+                Foodster
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click = "model.updateUser()" class="navbar-link">
+          Register
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+</nav>
+ <div class="container ">
+
+    <div class="login">
+     <div ng-show="model.alert" class="alert alert-danger">
+        {{model.alert}}
+      </div>
+      <h1>Register</h1>
+       <div class="form-group">
+        <label for="firstName">Your Name</label>
+        <input ng-model="model.user.fullName" type="text"
+               class="form-control"
+               placeholder="Full Name" id="firstName" required/>
+      </div>
+      
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input ng-model="model.user.username" type="text"
+               class="form-control"
+               placeholder="username" id="username" required/>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input ng-model="model.user.password" type="password"
+               class="form-control"
+               placeholder="password" id="password" required/>
+      </div>
+      <div class="form-group">
+        <label for="verifyPassword">Verify Password</label>
+         <input ng-model="model.user.verifyPassword" type="password"
+               class="form-control"
+               placeholder="verify password" id="verifyPassword"required/>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+          <input ng-model="model.user.email" type="email"
+               class="form-control"
+               placeholder="example@gmail.com" id="email" required/>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+           <input ng-model="model.user.phone" type="text" id="phone"
+               class="form-control"
+               placeholder="+1-857-987-0983" required/>
+      </div>
+
+        <a class="btn btn-primary btn-block" ng-click="model.register(model.user)">Register</a>
+        
+
+       
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class = "profile-footer">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+            <p class="navbar-text">
+                
+                <a>About | </a>
+                <a>Contact Us | </a>
+                <a>Feedback</a>
+            </p>
+
+        </div>
+    </div>
+</div>
+</nav>

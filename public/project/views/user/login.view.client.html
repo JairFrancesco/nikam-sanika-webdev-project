@@ -1,0 +1,61 @@
+ <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="profile-header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/homepage">
+                Foodster
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click = "#/register" class="navbar-link">
+          Register
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+</nav>
+ <div class="container ">
+    <div class="login">
+     <!-- <div ng-show="model.alert" class="alert alert-danger">
+        {{model.alert}}
+      </div>-->
+      <h1>Login</h1>
+
+        <input ng-model="model.user.username" type="text"
+               class="form-control"
+               placeholder="username" required/>
+        <input ng-model="model.user.password" type="password"
+               class="form-control"
+               placeholder="password" required/>
+        <a ng-click="model.login(model.user.username,model.user.password)" class="btn btn-success btn-block">Login</a>
+        
+
+        <a href="/auth/google" class="btn btn-danger btn-block">
+        <span class="fa fa-google-plus"></span>
+          Google
+          </a>
+
+          <a href="/auth/facebook" class="btn btn-primary btn-block">
+           <span class="fa fa-facebook"></span>
+              Facebook
+              </a>
+
+            <center><a href="#/register">Not a user? Sign Up Now!</a></center>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class = "profile-footer">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+            <p class="navbar-text">
+                
+                <a>About | </a>
+                <a>Contact Us | </a>
+                <a>Feedback</a>
+            </p>
+
+        </div>
+    </div>
+</div>
+</nav>

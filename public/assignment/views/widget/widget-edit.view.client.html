@@ -1,0 +1,132 @@
+<div class="page-list-header">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="row">
+    <div class="col-xs-10">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+          <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        
+            <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}">
+              Widget Edit
+            </a>
+          </div>
+        </div>
+    </div>
+<div class="col-xs-2">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            
+              <div ng-switch="model.widget.type">
+                <div ng-switch-when="HEADING">
+                  <p class="navbar-text pull-right">
+                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'size':model.widget.size,'type':'HEADING'})" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+              </p>
+              </div>
+
+              <div ng-switch-when="IMAGE">
+                <p class="navbar-text pull-right">
+                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'url':model.widget.url,'width':model.widget.width,'type':'IMAGE'})" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+              </p>
+              </div>
+
+              <div ng-switch-when="YOUTUBE">
+                <p class="navbar-text pull-right">
+                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'url':model.widget.url,'width':model.widget.width,'height':model.widget.height,'type':'YOUTUBE'})" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+              </p>
+              </div>
+
+              <div ng-switch-when="TEXT">
+                <p class="navbar-text pull-right">
+                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'rows':model.widget.rows,'placeholder':model.widget.placeholder,'formatted':model.widget.formatted,'type':'TEXT'})" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+              </p>
+              </div>
+
+               <div ng-switch-when="HTML">
+                <p class="navbar-text pull-right">
+                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'type':'HTML'})" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+              </p>
+              </div>
+
+
+
+              </div>
+            </p>
+          </div>
+        </div>
+        </div>
+    </div>
+</nav>
+</div>
+
+<div>
+
+  <!--<form>
+        <div ng-include="'views/widget/widget-'+model.widget.widgetType+'.view.client.html'">
+        </div><br><br><br><br><br><br><br><br>
+        {{model.widgets}}
+    </form>-->
+ <div ng-switch="model.widget.type">
+    <div ng-switch-when="HEADING">
+      <div ng-include src="'/assignment/views/widget/widget-heading.view.client.html'">
+      </div>
+    </div>
+
+    <div ng-switch-when="IMAGE">
+      <div ng-include src="'/assignment/views/widget/widget-image.view.client.html'">
+      </div>
+    </div>
+
+    <div ng-switch-when="YOUTUBE">
+      <div ng-include src="'/assignment/views/widget/widget-youtube.view.client.html'">
+      </div>
+    </div>
+
+    <div ng-switch-when="TEXT">
+      <div ng-include src="'/assignment/views/widget/widget-text.view.client.html'">
+      </div>
+    </div>
+
+    <div ng-switch-when="HTML">
+      <div ng-include src="'/assignment/views/widget/widget-html.view.client.html'">
+      </div>
+    </div>
+
+    </div>
+    <!--<div ng-include="'views/widget/widget-header.view.client.html'"></div>-->
+    <!--<div ng-include="'views/widget/widget-image.view.client.html'"></div>-->
+    <!--<div ng-include="'views/widget/widget-youtube.view.client.html'"></div>-->
+  
+</div>
+
+ <div class="page-list-footer">
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  
+     <div class="container-fluid">
+      <div class="navbar-footer">
+              <p class="navbar-text pull-right">  <a href="#/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+               </p>
+
+            </div>
+     </div>
+    </div>
+    

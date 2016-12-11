@@ -1,0 +1,113 @@
+ <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="profile-header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/homepage">
+                Foodster
+            </a>
+            <p class="navbar-text pull-right">
+                Welcome {{model.user.username}}
+            </p>
+        </div>
+    </div>
+</div>
+</nav>
+
+<div class="container">
+ <div class="row content">
+
+    <div class="col-sm-10 text-left">
+        <br>
+        <div class="row restaurant-image">
+            <img src="https://b.zmtcdn.com/data/pictures/2/16803362/f7d17bf6084f7dd455070c395f94bedf_featured_v2.JPG" class="img-rounded" height="100%" width="100%">
+
+        </div>
+        <div class="row">
+            <div class="col-sm-7">
+                <h3>{{model.restaurant.name}}</h3>
+                <h5>{{model.restaurant.location.locality}}</h5>
+            </div>
+            <div class="col-sm-3 text-right">
+                <h3>Rating</h3>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+
+            </div>
+            <hr>
+        </div>
+
+        <br>
+
+        <div class="fluid card">
+            <div class="row category-cards">
+                <div class="col-sm-3">
+                    <div class="row">
+                        <h4>Phone Number</h4>
+                    </div>
+
+                    <div class="row" ng-switch-on="{{model.restaurant.phone_numbers}}">
+                        <div ng-switch-when="{{model.restaurant.phone_numbers}}">
+                            {{model.restaurant.phone_numbers}}
+                        </div>
+                        <div ng-switch-default>
+                           <p>No number available</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <h4>Cuisines</h4>
+                        <p ng-show="{{model.restaurant.cuisines}}">{{model.restaurant.phone_numbers}}</p>
+                    </div>
+                    <div class="row">
+                        <h4>Cost</h4>
+
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                     <div class="row">
+                        <h4>Opening Hours</h4>
+
+                    </div>
+                    <div class="row">
+                        <h4>Address</h4>
+
+                    </div>
+                    
+                </div>
+                <div class="col-sm-4">
+                    <div class="row">
+                        <h4>Highlights</h4>
+                        <p><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Hello</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="fluid card">
+            <div class="row category-cards">
+                <p> <h4>Write a review &nbsp;&nbsp;<span class="glyphicon glyphicon-pencil">
+                </span></h4></p>
+                
+
+                <div class="row review">
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="Write a review for {{restaurant.name}}" class="form-control" ng-model="model.user.password">
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-danger btn-block" ng-click = "model.createUser(model.user)">Publish Review</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+     
+        
+    </div>
+
+    <div class="col-sm-2 text-left"></div>
+
+ </div>
+</div>

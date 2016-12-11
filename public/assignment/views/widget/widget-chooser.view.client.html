@@ -1,0 +1,59 @@
+
+
+<div class="page-list-header">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="row">
+    <div class="col-xs-10">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+          <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        
+            <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+              Choose Widget
+            </a>
+          </div>
+        </div>
+    </div>
+
+    </div>
+</nav>
+</div>
+
+<div class="container list">
+	<div class = "row">
+		<div class="col-md-12">
+      
+     <p><a ng-click = "model.createWidget({'type':'HEADING'})">HEADING</a></p>
+     <p><a ng-click = "model.createWidget({'type':'HEADING'})">HEADING</a></p>
+     <p><a ng-click = "model.createWidget({'type':'IMAGE'})">IMAGE</a></p>
+     <p><a ng-click = "model.createWidget({'type':'YOUTUBE'})">YOUTUBE</a></p>
+     <p><a ng-click = "model.createWidget({'type':'TEXT'})">TEXT</a></p>
+     <p><a ng-click = "model.createWidget({'type':'HTML'})">HTML</a></p>
+
+		</div>
+			
+			
+			
+		</div>
+	</div>
+
+
+ <div class="page-list-footer">
+<nav class="navbar navbar-default navbar-fixed-bottom">
+   
+     <div class="container-fluid">
+     	<div class="navbar-footer">
+              <p class="navbar-text pull-right">  <a href="#/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+               </p>
+
+            </div>
+     </div>
+    
+    
+ </nav>
+</div>

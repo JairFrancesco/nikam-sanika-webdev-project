@@ -1,0 +1,327 @@
+input.form-control {
+    margin-bottom: 20px;
+}
+.search-tab{
+    width:100%;
+    
+}
+.review{
+    padding:10px;
+}
+
+.review .col-sm-4{
+    padding:0px;
+}
+.review button{
+    width:auto;
+}
+
+.input-group-addon{
+    padding:0px;
+}
+
+.category-cards{
+    
+    background-color: #ffffff;
+    /*margin-right:10px;*/
+    border-radius: 10px;
+}
+
+.glyphicon.glyphicon-ok{
+    color:#00b300;
+}
+
+.category-cards img{
+    padding-top:5px;
+}
+
+.category-cards h4{
+    padding-left:10px;
+}
+
+.category-cards h5 {
+    padding-top:5px;
+    padding-left:5px;
+}
+.category-cards h6 {
+    
+    padding-left:5px;
+}
+.card-img-top{
+    width:0%;
+  height:auto;
+}
+
+.space-card{
+     background-color:#f0f0f5;
+
+}
+
+.space-card img{
+    visibility:hidden;
+}
+.space-card h4{
+    visibility:hidden;
+}
+.col-sm-6{
+    padding:0px;
+}
+
+.col-sm-2{
+    height:60%;
+    background-color:#f0f0f5;
+}
+
+.space{
+    background-color: #f0f0f5;
+    height:60%;
+}
+
+
+body {
+    padding-top: 36px;
+    display:block;
+    overflow:auto;
+    background-color: #f0f0f5;
+    height:auto;
+
+}
+
+.login{
+    overflow:scroll;
+	border-radius: 5px;
+	background-color: #ffffff;
+    width: 100%;
+    border: 0px solid black;
+    padding: 30px;
+    display:block;
+    
+    
+}
+.test{
+    display:block;
+    width:100%;
+    height:300px;
+    background-image: url('http://hd.wallpaperswide.com/thumbs/japanese_food-t2.jpg');
+    background-position: center;
+    background-attachment: fixed;
+
+}
+.restaurant-image{
+   background-color: #ffffff;
+   border-radius: 10px;
+    height:400px;
+    display:block;
+    background-size: cover;
+    overflow: hidden;
+
+}
+
+.restaurant-image img{
+    padding:15px;
+}
+
+.parallax {
+    /* The image used */
+    background: url('https://www.google.com/images/srpr/logo3w.png');
+
+    /* Set a specific height */
+    height:50%;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.steps-guide{
+    padding-top:40px;
+    text-align: center;
+    padding-bottom:40px;
+}
+.steps-guide h4{
+    padding-top:20px;
+}
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 50%;
+      margin: auto;
+}
+
+
+.white-glyph{
+    color:#fff;
+}
+
+.black-glyph{
+    color:#000;
+}
+
+.navbar-default{
+    background-color: #404040;
+
+
+}
+
+.page-list-header .navbar-default{
+    background-color:  #f0f5f5;
+}
+
+.page-list-footer .navbar-default  {
+    background-color:  #f0f5f5;
+}
+
+.list{
+    color: #008ae6;
+}
+
+.content{
+    position:relative;
+    top:17px;
+}
+
+.content .col-md-12{
+    color: #008ae6;
+}
+
+.page{
+    position:relative;
+    top:40px;
+}
+.navbar-default .navbar-brand{
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.delete{
+    width:100%;
+
+}
+
+.border-right{
+    border-right: 1px solid black;
+    height:1200px;
+}
+
+
+
+.page-list-header .navbar-default .navbar-brand{
+color:#404040;
+}
+
+.page-list-header .glyphicon-plus{
+    position:absolute;
+    top:15px;
+    right:30px;
+}
+
+.pull-right{
+    position:absolute;
+    right:20px;
+}
+
+.pull-right-cogs{
+    position:absolute;
+    right:5px;
+}
+
+.pull-right-line{
+    position:absolute;
+    right:5px;
+    z-index:-1;
+}
+.profile{
+    position:relative;
+    top:30px;
+}
+
+.profile-footer .glyphicon-user{
+    color:#ffffff;
+}
+
+.profile-footer p{
+    position:absolute;
+    right:20px;
+}
+.profile-header .glyphicon-ok{
+    color:#ffffff;
+}
+.profile-header p{
+    position:absolute;
+    right:20px;
+}
+
+.form-group label{
+    color:#000000;
+}
+
+.plus-icon{
+    position:absolute;
+    right:-24px;
+    top:-10px;
+}
+
+.plus-icon-websites{
+    position:absolute;
+    right:5px;
+    top:2px;
+}
+.gizmodo{
+    position:absolute;
+    top:60px;
+    overflow: auto;
+    bottom:60px;
+    width:100%;
+    
+
+}
+
+.upload{
+    position:relative;
+    top:34px;
+    left:-51px;
+    height:33px;
+    width:103px;
+
+}
+
+.outer-container{
+    position:relative;
+
+}
+
+
+
+.inner-container{
+    position:absolute;
+    float:right;
+    right:0px;
+    top:0px;
+    z-index:10;
+    background-color:white;
+}
+
+.youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    /*padding-right:0;*/
+    height: 0;
+    overflow: auto;
+}
+
+
+.youtube-widget iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:80%;
+}
+
+.navbar-default .navbar-text {
+    color: #ffffff;
+}
+
+.navbar-footer a{
+    color: #ffffff;
+}

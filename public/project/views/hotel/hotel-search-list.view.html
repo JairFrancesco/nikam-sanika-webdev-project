@@ -1,0 +1,81 @@
+ <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="profile-header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/homepage">
+                Foodster
+            </a>
+            <p class="navbar-text pull-right">
+                Welcome {{model.user.username}}
+            </p>
+        </div>
+    </div>
+</div>
+</nav>
+
+<div class="container hotel-list">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+           
+        </div>
+
+         <div class="col-sm-8 text-left">
+
+            <h2>Search Results</h2>
+            <br>
+            <div ng-repeat="result in model.restaurants">
+            
+            <div class="fluid card category-cards">
+                <div class="row ">
+                    <div class="col-sm-4">
+                        <img src= "{{result.restaurant.featured_image}}" class="img-fluid img-thumbnail" width="100%">
+                       <!-- <div class="row text-center"><h6>CUISINES:</h6></div>
+                         <div class="row text-center"><h6>COST FOR TWO:</h6></div>
+                          <div class="row text-center"><h6>RATING:</h6></div>-->
+                    </div>
+                    <div class="col-sm-8">
+
+                    
+                        <h4>{{result.restaurant.name}}</h4>
+                <p>{{result.restaurant.location.locality}}</p>
+                 <p>{{result.restaurant.location.address}}</p>
+                 <p>CUISINES : {{result.restaurant.cuisines}}</p>
+                 <p>COST FOR TWO : {{result.restaurant.currency}}{{result.restaurant.average_cost_for_two}}</p>
+                 <p>RATING : {{result.restaurant.user_rating.aggregate_rating}}</p>
+                <br>
+               <!-- <div class="row"><p>CUISINES : {{result.restaurant.cuisines}}</p></div>
+                         <div class="row"><h6>COST FOR TWO : {{result.restaurant.currency}}{{result.restaurant.average_cost_for_two}}</h6></div>
+                          <div class="row"><h6>RATING : {{result.restaurant.user_rating.aggregate_rating}}</h6></div>-->
+                    </div>
+                </div>
+                <div class="row">
+                    <center><a ng-click="model.getRestaurantDetails(result.restaurant.id)" class="btn btn-primary">Details</a></center>
+                    </div>
+                    
+               </div>
+            
+            <br>
+           <!-- <div class="fluid card">
+                <div class="row category-cards">
+                    <div class="col-sm-4">
+                        <img src= "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS5VxDQQ0qxeZlsDvOTxUIHJxGC3Dppz4lKjBrjlPortzRjEgLAuQ" class="img-fluid img-thumbnail" width="100%">
+                    </div>
+                    <div class="col-sm-8">
+                        <h4>{{model.search.hotelName}}</h4>
+                        <p><b>{{model.search.hotelArea}}</b></p>
+                        <p><h6>{{model.search.hotelAddress}}</h6></p>
+
+                    </div>
+                </div>
+
+            </div>-->
+        </div>
+
+         </div>
+
+         <div class="col-sm-2 sidenav">
+            
+         </div>
+
+    </div>
+</div>
