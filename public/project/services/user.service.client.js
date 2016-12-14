@@ -14,9 +14,9 @@
        "login" :login,
        "updateUser" :updateUser,
        "logout" : logout,
-       "findReviewsForUser" :findReviewsForUser
-	    /* "findUserById" : findUserById,
-       "findUserByUsername" : findUserByUsername,
+       "findReviewsForUser" :findReviewsForUser,
+	    "findUserById" : findUserById
+      /* "findUserByUsername" : findUserByUsername,
        "findUserByCredentials" :findUserByCredentials,
        
        "deleteUser" : deleteUser,
@@ -86,7 +86,7 @@
   }
 
   function findUserById(id) {
-    var url = '/api/user/' +  id;
+    var url = '/api/user/' +  id + '/profile';
     return $http.get(url);
    
   }

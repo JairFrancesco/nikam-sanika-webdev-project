@@ -22,7 +22,9 @@ var UserSchema = mongoose.Schema({
 	},
 	query:String,
 	role:{type:String, default:'CUSTOMER',enum: ['ADMIN','CUSTOMER']},
-	reviews : [{type : mongoose.Schema.Types.ObjectId, ref:'ReviewModel'}], //--> ref should be name of the model we declare
+	reviews : [{type : mongoose.Schema.Types.ObjectId, ref:'ReviewModel'}],
+	followers : [{type : mongoose.Schema.Types.ObjectId, ref:'UserModel'}],
+	following : [{type : mongoose.Schema.Types.ObjectId, ref:'UserModel'}], //--> ref should be name of the model we declare
 	dateCreated : {type : Date, default: Date.now()}
 }, {collection : 'user'});
 

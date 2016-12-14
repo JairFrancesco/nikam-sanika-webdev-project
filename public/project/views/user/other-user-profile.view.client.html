@@ -20,18 +20,29 @@
         <div class="fluid card">
           <div class="row">
             <div class="col-sm-3 display-pic">
-              <img src="{{model.user.imageUrl}}" class="img-thumbnail"></img>
+              <img src="{{model.otherUser.imageUrl}}" class="img-thumbnail"></img>
             </div>
 
             <div class="col-sm-9 text-left">
 
              
-             <h3>{{model.user.fullName}}</h3>
+             <h3>{{model.otherUser.fullName}}</h3>
              
-             <p>@{{model.user.username}}</p>
+             <p>@{{model.otherUser.username}}</p>
 
-             <p>{{model.user.about}}</p>
-             <a ng-click="model.followUser()" class="btn btn-warning btn-xs">Follow</a>
+             <p>{{model.otherUser.about}}</p>
+              <a ng-show="model.otherUser.same == 'FALSE'" ng-click="model.followUser()" class="btn btn-default btn-xs">Follow</a>
+             
+            
+               <!-- <div ng-if="{{model.otherUser.same}}">
+                  inside true
+                  <a href="#/user/{{model.user._id}}" class="btn btn-warning btn-xs">Update Profile</a>
+                </div>
+                <div ng-show="{{model.otherUser.same}} == false">
+                  inside false
+                  <a ng-click="model.followUser()" class="btn btn-default btn-xs">Follow</a>
+                </div>-->
+             
             </div>
 
           </div>
@@ -46,7 +57,7 @@
     <div class="row">
             <div class="col-sm-3 category-cards">
                <div class="fluid card">
-              <h4>{{model.user.username}}'s Statistics</h4>
+              <h4>{{model.otherUser.username}}'s Statistics</h4>
              <span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Reviews<br><br>
               <span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Followers
                 
@@ -56,21 +67,17 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-8 category-cards">
               <div class="fluid card">
-                <h4>{{model.user.username}}'s Reviews</h4>
+                <h4>{{model.otherUser.username}}'s Reviews</h4>
+                <div ng-repeat ="review in model.reviewList">
                 <div class="row">
 
                   <div class="fluid card user-review">
-                    <h5><b>Gourmet Dumpling Kitchen</b></h5>
-                    <h6>Hello. This is my webdev page</h6>
+                    <h5><b>{{review.restaurant}}</b></h5>
+                    <h6>{{review.review}}</h6>
                   </div>
                 </div>
                 <br>
-                <div class="row">
-
-                  <div class="fluid card user-review">
-                    <h6>Hello. This is my webdev page</h6>
-                  </div>
-                </div>
+              </div>
 
                </div>
             </div>

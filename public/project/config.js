@@ -45,6 +45,11 @@ angular
 			controller : "RestaurantController",
 			controllerAs : "model"
 			})
+			.when('/user/:uid/profile',{
+			templateUrl : "/project/views/user/other-user-profile.view.client.html",
+			controller : "OtherUserController",
+			controllerAs : "model"
+			})
 			/*.when('/restaurant/:rid',{
 			templateUrl : "/project/views/hotel/restaurant-details.view.html",
 			controller : "HotelController",

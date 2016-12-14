@@ -104,7 +104,7 @@
 
                 <div class="row review">
                     <div class="col-sm-9">
-                        <input type="text" placeholder="Write a review for this restaurant..." class="form-control" ng-model="model.review">
+                        <input type="text" placeholder="Write a review  for {{model.restaurant.name}}..." class="form-control" ng-model="model.review">
                     </div>
                     <div class="col-sm-3">
                         <button class="btn btn-danger btn-block" ng-click = "model.createReview(model.user._id,model.restaurant.id,model.review)">Publish Review</button>

@@ -23,7 +23,7 @@ module.exports = function(app,model){
 
 
     app.get('/api/user', findUser);
-    app.get('/api/user/:userId',findUserById);
+    app.get('/api/user/:userId/profile',findUserById);
     app.post('/api/user',createUser);
     app.put('/api/user/:userId',loggedInAndSelf,updateUser);
     app.delete('/api/user/:userId',loggedInAndSelf,deleteUser);
