@@ -25,7 +25,7 @@ angular
 			controller : "RegisterController",
 			controllerAs : "model"
 			})
-			.when('/profile',{
+			.when('/profile/:uid',{
 			templateUrl : "/project/views/user/profile.view.client.html",
 			controller : "ProfileController",
 			controllerAs : "model"
@@ -40,16 +40,21 @@ angular
 			controller : "RestaurantController",
 			controllerAs : "model"
 			})
+			/*.when('/restaurant/:rid',{
+			templateUrl : "/project/views/hotel/restaurant-details.view.html",
+			controller : "HotelController",
+			controllerAs : "model"
+			})*/
 			.when('/user/:uid',{
-			templateUrl : "/project/views/user/profile.view.client.html",
+			templateUrl : "/project/views/user/update.profile.view.client.html",
 			controller : "ProfileController",
-			controllerAs : "model",
+			controllerAs : "model"
 			/*resolve : {
 				checkLogin: checkLogin
 			}*/
 			})
 			.otherwise({
-			redirectTo : "/homepage"
+			redirectTo : "/login"
 		});
 	}
 

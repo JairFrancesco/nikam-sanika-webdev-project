@@ -12,8 +12,23 @@
     	var vm = this;
         vm.login = login;
         function login(username,password){
+
+            var promise = UserService.login(username,password);
+                promise
+                .success(function(user){
+                    if(user === '0'){
+                        vm.alert = "No such user";
+                    }
+                    else{
+                        $rootScope.currentUser = user;
+                        $location.url("user/" + user._id);
+                    }
+                })
+                .error(function(){
+
+                });
             //var promise = UserService.findUserByCredentials(username,password);
-            if(username == null){
+           /* if(username == null){
                 if(password == null){
                     vm.alert = "Username and password are required";
                 }else{
@@ -36,7 +51,7 @@
                 .error(function(){
 
                 });
-             }
+             }*/
            }
     }
 
@@ -47,7 +62,7 @@
         console.log('reached register controller');
 
         function register(user){
-            console.log(user);
+           //console.log(user);
            /* if(user == undefined){
                 vm.alert = "Please enter the minimum data required";
             }
@@ -127,10 +142,11 @@
             promise
                 .success(function(user){
                     if(user != '0'){
-                        console.log("form update controller");
-                        console.log(user);
+                        console.log("form update controller tests");
+                       // console.log(user);
                         //vm.user = user;
-                        $location.url("user/" + vm.user._id);
+                        console.log(user);
+                        $location.url("profile/" + vm.user._id);
 
                     }
                     
@@ -182,7 +198,7 @@
            promise
             .success(function(user){
                 if(user != '0'){
-                    console.log(user);
+                    //console.log(user);
                     vm.user = user;
 
                 }
@@ -212,7 +228,7 @@
            promise
             .success(function(user){
                 if(user != '0'){
-                    console.log(user);
+                    //console.log(user);
                     vm.user = user;
 
                 }
@@ -226,7 +242,7 @@
     		searchPromise
     			.success(function(response){
     				if(response != '0'){
-    					console.log(response.restaurants.length);
+    					//console.log(response.restaurants.length);
     					vm.restaurants = response.restaurants;
     					console.log(vm.restaurants);
     					//$location.url("/search");

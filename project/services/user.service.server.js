@@ -5,6 +5,8 @@ module.exports = function(app,model){
   var session = require('express-session');
   var LocalStrategy = require('passport-local').Strategy;
   var bcrypt = require("bcrypt-nodejs");
+  var multer = require('multer'); // npm install multer --save
+  var upload = multer({ dest: __dirname+'/../../public/project/uploads' });
   //var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
   var FacebookStrategy = require('passport-facebook').Strategy;
   app.use(session({
@@ -30,6 +32,7 @@ module.exports = function(app,model){
     app.post('/api/checkAdmin', checkAdmin);
     app.post('/api/logout',logout);
     app.post('/api/register',register);
+    app.post("/api/upload", upload.single('myFile'), uploadImage);
 
     //app.get('/auth/google',passport.authenticate('google', { scope : ['profile', 'email'] }));
     app.get   ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
@@ -272,9 +275,17 @@ module.exports = function(app,model){
 
       model.userModel.updateUser(userId,user)
            .then(function(status){
+            model.userModel.findUserById(userId)
+              .then(function(user){
+
               console.log("From server service");
-              console.log(status);
-              res.send(200);
+              //console.log(status);
+              //res.send(200);
+              res.json(user);
+              },
+              function(error){
+                res.sendStatus(400).send(error);
+              });
            },
            function(error){
             res.sendStatus(400).send(error);
@@ -306,6 +317,44 @@ module.exports = function(app,model){
     	}else{
         res.json(req.user);
       }
+    }
+
+    function uploadImage(req, res) {
+
+      console.log("Entered upload img");
+        //var userId      = req.body._id;
+        var width         = req.body.width;
+        var myFile        = req.file;
+       var userId        = req.body.userId;
+        console.log("$USERID "+userId);
+
+
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+
+        
+        model.userModel.findUserById(userId)
+              .then(function(user){
+               // widget.width = width;
+                user.imageUrl = "/project/uploads/" + filename;
+                console.log("inside upload pic");
+                model.userModel.updateUser(userId,user)
+                  .then(function(status){
+                    res.redirect("/project/#/user/" + userId);
+                  },
+                  function(error){
+                    res.statusCode(400).send(error);
+                  });
+                
+              },
+              function(error){
+                res.statusCode(400).send(error);
+              });
+
     }
 
     

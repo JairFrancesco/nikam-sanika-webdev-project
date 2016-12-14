@@ -10,8 +10,8 @@ var UserSchema = mongoose.Schema({
 	fullName : String,
 	username : String,
 	password : String,
-	
-	//lastName : String,
+	imageUrl : String,
+	about : String,
 	email : String,
 	phone :String,
 	facebook : {
@@ -22,7 +22,7 @@ var UserSchema = mongoose.Schema({
 	},
 	query:String,
 	role:{type:String, default:'CUSTOMER',enum: ['ADMIN','CUSTOMER']},
-	//websites : [{type : mongoose.Schema.Types.ObjectId, ref:'WebsiteModel'}], //--> ref should be name of the model we declare
+	reviews : [{type : mongoose.Schema.Types.ObjectId, ref:'ReviewModel'}], //--> ref should be name of the model we declare
 	dateCreated : {type : Date, default: Date.now()}
 }, {collection : 'user'});
 

@@ -2,7 +2,7 @@
     <div class="profile-header">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#/homepage">
+            <a class="navbar-brand" href="#/homepage/{{model.user._id}}">
                 Foodster
             </a>
             <p class="navbar-text pull-right">
@@ -19,15 +19,16 @@
     <div class="col-sm-10 text-left">
         <br>
         <div class="row restaurant-image">
-            <img src="https://b.zmtcdn.com/data/pictures/2/16803362/f7d17bf6084f7dd455070c395f94bedf_featured_v2.JPG" class="img-rounded" height="100%" width="100%">
+            <img src="{{model.restaurant.thumb}}" class="img-rounded" height="100%" width="100%">
 
         </div>
         <div class="row">
             <div class="col-sm-7">
                 <h3>{{model.restaurant.name}}</h3>
                 <h5>{{model.restaurant.location.locality}}</h5>
+                
             </div>
-            <div class="col-sm-3 text-right">
+            <div class="col-sm-3">
                 <h3>Rating</h3>
                 <span class="glyphicon glyphicon-star"></span>
                 <span class="glyphicon glyphicon-star"></span>
@@ -40,51 +41,58 @@
         </div>
 
         <br>
-
+        <div class="row category-cards">
         <div class="fluid card">
-            <div class="row category-cards">
+            
                 <div class="col-sm-3">
                     <div class="row">
                         <h4>Phone Number</h4>
-                    </div>
+                        <h6><p>{{model.restaurant.phone_numbers}}</p></h6>
 
-                    <div class="row" ng-switch-on="{{model.restaurant.phone_numbers}}">
-                        <div ng-switch-when="{{model.restaurant.phone_numbers}}">
+                       <!-- <div class="row" ng-switch-on="{{model.restaurant.phone_numbers}}">
+                        <div ng-switch-when="0">
                             {{model.restaurant.phone_numbers}}
                         </div>
                         <div ng-switch-default>
                            <p>No number available</p>
                         </div>
+                        </div>-->
+
                     </div>
+
+                    
 
                     <div class="row">
                         <h4>Cuisines</h4>
-                        <p ng-show="{{model.restaurant.cuisines}}">{{model.restaurant.phone_numbers}}</p>
+                        <p>{{model.restaurant.cuisines}}</p>
                     </div>
                     <div class="row">
                         <h4>Cost</h4>
-
+                        <p>{{model.restaurant.currency}}{{model.restaurant.average_cost_for_two}} for 2</p>
                     </div>
                 </div>
+
                 <div class="col-sm-3">
                      <div class="row">
                         <h4>Opening Hours</h4>
-
+                        <p>11 AM - 11 PM</p>
                     </div>
                     <div class="row">
                         <h4>Address</h4>
-
+                       <p>{{model.restaurant.location.address}}</p>
                     </div>
                     
                 </div>
                 <div class="col-sm-4">
                     <div class="row">
                         <h4>Highlights</h4>
-                        <p><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Hello</p>
+                        <p><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Has table booking</p>
+                        <p><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Has online delivery</p>
                     </div>
                 </div>
             </div>
         </div>
+
         <br><br>
         <div class="fluid card">
             <div class="row category-cards">
@@ -94,18 +102,43 @@
 
                 <div class="row review">
                     <div class="col-sm-9">
-                        <input type="text" placeholder="Write a review for {{restaurant.name}}" class="form-control" ng-model="model.user.password">
+                        <input type="text" placeholder="Write a review for this restaurant..." class="form-control" ng-model="model.review">
                     </div>
                     <div class="col-sm-3">
-                        <button class="btn btn-danger btn-block" ng-click = "model.createUser(model.user)">Publish Review</button>
+                        <button class="btn btn-danger btn-block" ng-click = "model.createReview(model.user._id,model.restaurant.R.res_id,model.review)">Publish Review</button>
                     </div>
                 </div>
 
+            </div><br><br>
+        </div>
+
+        <div class="row category-cards">
+            <div class="fluid card">
+                <p><h4>Reviews</h4></p><hr>
+                <div class="row">
+                    <div col="col-sm-2">
+                    
+                </div>
+                <div class="col-sm-8">
+                    <!--<img src = "https://b.zmtcdn.com/data/pictures/chains/8/16774318/a54deb9e4dbb79dd7c8091b30c642077_featured_thumb.png" class="profile"/>-->
+                    <h4>Sanika Nikam</h4>
+                    <p>  Very busy while quick to serve. Decent food too. Looked like a student favourite in the Chinatown area. So prices very reasonable too. Recommended<p>
+                </div>
+                </div>
+                
+    
+                        
+                <br><br>
+               <!-- <div class="row review">
+                  
+                </div>-->
+                    
+                
             </div>
         </div>
      
         
-    </div>
+    </div><!--end of main content div-->
 
     <div class="col-sm-2 text-left"></div>
 

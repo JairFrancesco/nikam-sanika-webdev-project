@@ -20,13 +20,23 @@ input.form-control {
     padding:0px;
 }
 
+.btn-xs{
+    margin-bottom:10px;
+}
 .category-cards{
     
     background-color: #ffffff;
     /*margin-right:10px;*/
     border-radius: 10px;
+    overflow: auto;
+    padding-left:10px;
+
 }
 
+.category-cards p{
+    padding-left:10px;
+    padding-top:5px;
+}
 .glyphicon.glyphicon-ok{
     color:#00b300;
 }
@@ -71,19 +81,57 @@ input.form-control {
     height:60%;
     background-color:#f0f0f5;
 }
-
+.col-sm-9{
+    padding:0px;
+}
 .space{
     background-color: #f0f0f5;
     height:60%;
 }
+.user-review{
+    background-color:#eeffe6;
+    margin-left:20px;
+    margin-right: 20px;
+    border-radius:10px;
+}
+.profile{
+    display: inline-block;
+  width: 8%;
+  height: 8%;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding-top:0px;
+  z-index: 20px;
+  overflow:auto;
+}
 
+.display-pic img{
+    width: 70%;
+  height: 70%;
+  border-radius: 30%;
+  margin-top: 15px;
+    white-space: nowrap;
+    display: inline-block;
 
+ 
+}
+.glyphicon-chevron-right{
+    color:#0cb235;
+}
+hr{
+    padding:0px;
+    margin: 0px;
+}
 body {
-    padding-top: 36px;
+    padding-top: 75px;
+    padding-bottom: 50px;
     display:block;
     overflow:auto;
     background-color: #f0f0f5;
     height:auto;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 
 }
 
@@ -320,6 +368,10 @@ color:#404040;
 
 .navbar-default .navbar-text {
     color: #ffffff;
+}
+
+.navbar-text a{
+   color: #ffffff; 
 }
 
 .navbar-footer a{

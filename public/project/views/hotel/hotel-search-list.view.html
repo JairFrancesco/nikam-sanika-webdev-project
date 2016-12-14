@@ -2,7 +2,7 @@
     <div class="profile-header">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#/homepage">
+            <a class="navbar-brand" href="#/homepage/{{model.user._id}}">
                 Foodster
             </a>
             <p class="navbar-text pull-right">
@@ -42,6 +42,7 @@
                  <p>CUISINES : {{result.restaurant.cuisines}}</p>
                  <p>COST FOR TWO : {{result.restaurant.currency}}{{result.restaurant.average_cost_for_two}}</p>
                  <p>RATING : {{result.restaurant.user_rating.aggregate_rating}}</p>
+                 <p><a ng-click="model.getRestaurantDetails(result.restaurant.id)">Details</a></p>
                 <br>
                <!-- <div class="row"><p>CUISINES : {{result.restaurant.cuisines}}</p></div>
                          <div class="row"><h6>COST FOR TWO : {{result.restaurant.currency}}{{result.restaurant.average_cost_for_two}}</h6></div>
@@ -49,7 +50,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <center><a ng-click="model.getRestaurantDetails(result.restaurant.id)" class="btn btn-primary">Details</a></center>
+                    <center></center>
                     </div>
                     
                </div>

@@ -1,0 +1,85 @@
+ <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="profile-header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/homepage/{{model.user._id}}">
+                Foodster
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click = "model.updateUser()" class="navbar-link">
+          Register
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+</nav>
+ <div class="container ">
+    <div class="login">
+     <!-- <div ng-show="model.alert" class="alert alert-danger">
+        {{model.alert}}
+      </div>-->
+      <h1>Your Profile</h1>
+      <div class="form-group">
+        <label for="firstName">Your Name</label>
+        <input ng-model="model.user.fullName" type="text"
+               class="form-control"
+               placeholder="Full Name" id="firstName" required/>
+      </div>
+      
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input ng-model="model.user.username" type="text"
+               class="form-control"
+               placeholder="johndoe12" id="username" required/>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input ng-model="model.user.email" type="email"
+               class="form-control"
+               placeholder="example@gmail.com" id="email" required/>
+      </div>
+      
+      <div class="form-group">
+        <label for="about">About Yourself</label>
+           <input ng-model="model.user.about" type="text" id="about"
+               class="form-control"
+               placeholder="A sentence or two that describes you the best" required/>
+      </div>
+
+      
+
+      <div class="form-group">
+                <label for ="upload">Profile Picture</label>
+                <form action="/api/upload" id="upload" method="post" enctype="multipart/form-data">
+                <input  name="myFile"   type="file" class="form-control"/>
+                <!--<input  name="width"    value="{{model.widget.width}}" style="display: none"/>-->
+                <input  name="userId" value="{{model.user._id}}"   style="display: none"/>
+                <!--<input  name="userId" value="{{model.userId}}"   style="display: none"/>
+                <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>-->
+                <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
+               </form>
+            </div>
+
+        <a ng-click="model.updateUser()" class="btn btn-success btn-block">Update Profile</a>
+        
+
+       
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class = "profile-footer">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+            <p class="navbar-text">
+                
+                <a>About | </a>
+                <a>Contact Us | </a>
+                <a>Feedback</a>
+            </p>
+
+        </div>
+    </div>
+</div>
+</nav>

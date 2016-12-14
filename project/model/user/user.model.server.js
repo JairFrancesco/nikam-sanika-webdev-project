@@ -51,7 +51,9 @@ module.exports = function(){
 		{
 			firstName : user.firstName,
 			lastName : user.lastName,
-			email :user.email
+			email :user.email,
+			about : user.about,
+			imageUrl : user.imageUrl
 		});
 	}
 

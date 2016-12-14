@@ -10,15 +10,18 @@
 	   var api = {
 	     "register"   : register,
        "findCurrentUser":findCurrentUser,
-       "findRestaurantBySearchQuery" :findRestaurantBySearchQuery
+       "findRestaurantBySearchQuery" :findRestaurantBySearchQuery,
+       "login" :login,
+       "updateUser" :updateUser,
+       "logout" : logout
 	    /* "findUserById" : findUserById,
        "findUserByUsername" : findUserByUsername,
        "findUserByCredentials" :findUserByCredentials,
-       "updateUser" :updateUser,
+       
        "deleteUser" : deleteUser,
-       "login" :login,
+       
        "checkLogin" : checkLogin,
-       "logout" : logout,
+       
        "register" : register,
        
        "checkAdmin": checkAdmin,*/
@@ -96,6 +99,8 @@
 
   function updateUser(user){
     var url = "/api/user/" + user._id;
+    console.log("From client service");
+    console.log(user);
     return $http.put(url,user);
     
   }

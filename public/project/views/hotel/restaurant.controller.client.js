@@ -3,11 +3,13 @@
         .module("Foodster")
         .controller("RestaurantController", RestaurantController);
 
-        function RestaurantController($location,$routeParams,RestaurantService){
-
+        function RestaurantController($location,$routeParams,UserService,RestaurantService){
+            console.log("Reached rest controller");
         	var vm = this;
         	var restaurantId = $routeParams.rid;
-        	vm.getRestaurantDetails = getRestaurantDetails;
+            vm.createReview = createReviewByUser;
+            console.log(restaurantId);
+        	//vm.getRestaurantDetails = getRestaurantDetails;
 
         	function init() {
         	console.log("Reached rest controller");
@@ -29,25 +31,49 @@
 
             //to call the details service when the page loads
 
-        	var promise = RestaurantService.findRestaurantDetailsById(restaurantId);
+        	var restaurantPromise = RestaurantService.findRestaurantDetailsById(restaurantId);
 
-        	promise
+        	restaurantPromise
         		.success(function(restaurant){
         			console.log(restaurant);
         			vm.restaurant = restaurant;
 
+                    //store this restaurant in local DB
+                    /*RestaurantService.createRestaurant(restaurant)
+                        .success(function(response){
+                            console.log(response);
+                            if(response != 'OK'){
+                                console.log("Inserted hotel successfully");
+                            }
+                        }) 
+                        .error(function(){
+
+                        });*/
         		})
         		.error(function(){
 
         		});
         	
 
+           // var reviewsListPromise = RestaurantService.findAllReviews()
+
            }
            init();
         	
-
         	
+           function createReviewByUser(userId,restaurantId,review){
 
+                var reviewPromise = RestaurantService.createUserReview(userId,restaurantId,review);
+                console.log("Reached reviews controller");
+                reviewPromise
+                    .success(function(response){
+                        console.log("In promise success")
+                        console.log(response);
+                    })
+                    .error(function(){
+                        console.log("In error");
+                    });
+           }
         }
 
 })();
