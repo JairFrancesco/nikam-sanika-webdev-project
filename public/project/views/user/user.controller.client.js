@@ -151,6 +151,31 @@
                 .error(function(){
                     console.log("Did not find reviews");
                 });
+
+                var followersList =[];
+
+                var followersPromise = UserService.findAllFollowers(userId);
+
+                followersPromise
+                    .success(function(followers){
+                        console.log(followers);
+                        for (var f in followers){
+                            UserService.findUserById(followers[f])
+                                .success(function(follower){
+                                    console.log("found one follower");
+                                    console.log(follower);
+                                    followersList.push(follower);
+                                })
+                                .error(function(){
+
+                                });
+                        }
+                        vm.followers = followersList;
+
+                    })
+                    .error(function(){
+
+                    });
         }
         init();
 

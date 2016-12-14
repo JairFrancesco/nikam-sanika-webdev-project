@@ -14,12 +14,47 @@ module.exports = function(){
 		findWebsitesForUser : findWebsitesForUser,
 		deleteUser :deleteUser,
 		findReviewsByUser :findReviewsByUser,
+		followUser : followUser,
+		findAllFollowers :findAllFollowers,
 		setModel :setModel
 };
 	return api;
 
 	function setModel(_model){
 		model = _model;
+	}
+
+	function followUser(followerId,followingId){
+		return UserModel.findById(followingId)
+			.then(function(followingObj){
+				return UserModel.findById(followerId)
+					.then(function(followerObj){
+						followingObj.followers.push(followerObj);
+						followerObj.following.push(followingObj);
+						followingObj.save();
+						followerObj.save();
+						return followingObj.save();
+					},
+					function(error){
+						console.log("In follower error");
+						console.log(error);
+					})
+			},
+			function(error){
+				console.log("in following error");
+				console.log(error);
+			})
+	}
+
+	function findAllFollowers(userId){
+		return UserModel.findById(userId)
+				.then(function(user){
+					return user.followers;
+				},
+				function(error){
+					console.log("Some thing wrong in model followers");
+					console.log(error);
+				})
 	}
 
 	function createUser(user){

@@ -15,7 +15,9 @@
        "updateUser" :updateUser,
        "logout" : logout,
        "findReviewsForUser" :findReviewsForUser,
-	    "findUserById" : findUserById
+	    "findUserById" : findUserById,
+      "followUser" : followUser,
+      "findAllFollowers" : findAllFollowers
       /* "findUserByUsername" : findUserByUsername,
        "findUserByCredentials" :findUserByCredentials,
        
@@ -43,6 +45,21 @@
     });*/
   }
 
+  function findAllFollowers(userId){
+    var url = "/api/user/" + userId + "/followers";
+    return $http.get(url);
+  }
+
+  function followUser(followerId,followingId){
+    console.log("In follow user client service");
+    var url = "/api/user/follow";
+    var followObj = {
+      'followerId' : followerId,
+      'followingId' : followingId
+    };
+
+    return $http.post(url,followObj);
+  }
   function findReviewsForUser(userId){
     var url = "/api/review/user/" + userId;
     return $http.get(url);

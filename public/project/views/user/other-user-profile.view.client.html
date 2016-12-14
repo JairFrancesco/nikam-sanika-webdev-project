@@ -31,7 +31,7 @@
              <p>@{{model.otherUser.username}}</p>
 
              <p>{{model.otherUser.about}}</p>
-              <a ng-show="model.otherUser.same == 'FALSE'" ng-click="model.followUser()" class="btn btn-default btn-xs">Follow</a>
+              <a ng-show="model.otherUser.same == 'FALSE'" ng-disabled="model.otherUser.followed == 'TRUE'" ng-click="model.followUser(model.user._id,model.otherUser._id)" class="btn btn-default btn-xs">Follow</a>&nbsp;&nbsp;<span ng-show="model.otherUser.followed == 'TRUE'" class="glyphicon glyphicon-ok"></span>
              
             
                <!-- <div ng-if="{{model.otherUser.same}}">
@@ -57,7 +57,16 @@
     <div class="row">
             <div class="col-sm-3 category-cards">
                <div class="fluid card">
-              <h4>{{model.otherUser.username}}'s Statistics</h4>
+              <h4>{{model.otherUser.username}}'s Followers</h4>
+              <div ng-repeat ="follower in model.followers">
+                <div class="row">
+
+                  <div class="fluid card user-review">
+                    <h5><b>{{follower.fullName}}</b></h5>
+                  </div>
+                </div>
+                <br>
+              </div>
              <span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Reviews<br><br>
               <span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Followers
                 

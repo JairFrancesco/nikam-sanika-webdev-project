@@ -34,6 +34,8 @@ module.exports = function(app,model){
     app.post('/api/register',register);
     app.post("/api/upload", upload.single('myFile'), uploadImage);
     app.get("/api/review/user/:userId", findReviewsForUser);
+    app.post("/api/user/follow", followUser);
+    app.get("/api/user/:userId/followers",findAllFollowers);
 
     //app.get('/auth/google',passport.authenticate('google', { scope : ['profile', 'email'] }));
     app.get   ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
@@ -119,6 +121,34 @@ module.exports = function(app,model){
           res.sendStatus(400).send(err);
         });
 
+    }
+
+    function followUser(req,res){
+      var followerId = req.body.followerId;
+      var followingId = req.body.followingId;
+
+      model.userModel.followUser(followerId,followingId)
+        .then(function(followingObj){
+          console.log("FOLLOWING OBJ");
+          console.log(followingObj);
+          res.json(followingObj.followers);
+        },
+        function(error){
+          res.sendStatus(400).send(err);
+        })
+    }
+
+    function findAllFollowers(req,res){
+      var userId = req.params.userId;
+
+      model.userModel.findAllFollowers(userId)
+        .then(function(followers){
+          console.log(followers);
+          res.json(followers);
+        },
+        function(error){
+          res.sendStatus(400).send(err);
+        });
     }
 
     function register(req,res){

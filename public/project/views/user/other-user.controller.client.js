@@ -59,8 +59,8 @@
                     for(var r in reviews){
                         RestaurantService.findReviewById(reviews[r])
                             .success(function(review){
-                                console.log("found one review");
-                                console.log(review);
+                                //console.log("found one review");
+                                //console.log(review);
                                 reviewList.push(review);
                             })
                             .error(function(){
@@ -74,8 +74,62 @@
                     console.log("Did not find reviews");
                 });
 
+                var followersList =[];
+
+                var followersPromise = UserService.findAllFollowers(userId);
+
+                followersPromise
+                	.success(function(followers){
+                		console.log(followers);
+                		for (var f in followers){
+                			UserService.findUserById(followers[f])
+                				.success(function(follower){
+                					console.log("found one follower");
+                					console.log(follower);
+                					followersList.push(follower);
+                				})
+                				.error(function(){
+
+                				});
+                		}
+                		vm.followers = followersList;
+
+                		for(var f in followersList){
+                			if(followersList[f]._id == vm.user._id){
+                				vm.otherUser.followed = "TRUE";
+                				break;
+                			}
+                		}
+
+                	})
+                	.error(function(){
+
+                	});
+
         }
         init();
+
+        vm.followUser = followUser;
+
+        function followUser(followerId,followingId){
+        	var followPromise = UserService.followUser(followerId,followingId);
+        	console.log("In follow user controller");
+        	followPromise
+        		.success(function(followers){
+        			if(followers){
+        				console.log("recieved followwes in follow user controller");
+        				console.log(followers);
+        				
+        			}
+        			else{
+        				console.log("No response");
+        			}
+        			$location.url("/user/" + followingId+ "/profile");
+        		})
+        		.error(function(){
+
+        		});
+        }
      }
 
 })();
