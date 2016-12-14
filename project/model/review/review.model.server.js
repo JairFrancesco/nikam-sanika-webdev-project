@@ -6,7 +6,9 @@ module.exports = function(){
 
 	var api={
 		setModel :setModel,
-		createUserReview : createUserReview
+		createUserReview : createUserReview,
+		findReviewsByRestaurant : findReviewsByRestaurant,
+		findReviewById :findReviewById
 	};
 	return api;
 
@@ -42,14 +44,20 @@ module.exports = function(){
 	// 		});
 	// }
 
-	function createUserReview(userId,restaurantId,review){
+	function createUserReview(userId,zomatoId,review){
 		return ReviewModel.create(review)
 			.then(function(reviewObject){
-				console.log("in review success");
+				//console.log("in review success");
 				return model.userModel.findUserById(userId)
 					.then(function(userObject){
-						console.log(userObject);
-						return model.restaurantModel.findRestaurantById(restaurantId)
+						//console.log(userObject);
+						/*userObject.reviews.push(reviewObject);
+						userObject.save();
+						reviewObject._user = userObject._id;
+						reviewObject.createdBy = userObject.fullName;
+						reviewObject.save();
+						return reviewObject.save();*/
+						return model.restaurantModel.findRestaurantByZomatoId(zomatoId)
 								.then(function(restaurantObj){
 									userObject.reviews.push(reviewObject);
 									userObject.save();
@@ -57,7 +65,8 @@ module.exports = function(){
 									restaurantObj.save();
 									reviewObject._user = userObject._id;
 									reviewObject.createdBy = userObject.fullName;
-									reviewObject.restaurant = restaurantObj._id;
+									reviewObject.restaurant = restaurantObj.name;
+									reviewObject._restaurant = restaurantObj._id;
 									reviewObject.save();
 									return reviewObject.save();
 								},
@@ -79,5 +88,29 @@ module.exports = function(){
 			});
 	}
 
+
+	function findReviewsByRestaurant(restaurantName){
+
+		return ReviewModel.find({
+			'restaurant' : restaurantName
+		});
+
+		/*return ReviewModel.aggregate([
+				{$match : {restaurant : restaurantName}},
+				{$group : {
+					_id : "_user" },
+					reviews : {$push : {review : "$review"}}
+				}
+			],
+			{
+				explain :true
+			}).exec(function(e,d){
+				console.log(d);
+			});*/
+	}
+
+	function findReviewById(reviewId){
+		return ReviewModel.findById(reviewId);
+	}
 	
 };

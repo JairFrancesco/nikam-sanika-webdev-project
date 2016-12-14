@@ -8,7 +8,8 @@ module.exports = function(){
 		setModel :setModel,
 		findRestaurantById : findRestaurantById,
 		createRestaurant :createRestaurant,
-		findRestaurantByZomatoId : findRestaurantByZomatoId
+		findRestaurantByZomatoId : findRestaurantByZomatoId,
+		findReviewsForRestaurant : findReviewsForRestaurant
 	};
 	return api;
 
@@ -28,6 +29,15 @@ module.exports = function(){
 	function findRestaurantByZomatoId(zomatoId){
 		return RestaurantModel.findOne({
 			"zomatoId" : zomatoId
+		});
+	}
+
+	function findReviewsForRestaurant(zomatoId){
+		return RestaurantModel.findOne({
+			"zomatoId" : zomatoId
+		})
+		.then(function(restaurant){
+			return restaurant.reviews;
 		});
 	}
 

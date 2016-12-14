@@ -7,7 +7,9 @@ module.exports = function(){
 		_user : {type : mongoose.Schema.Types.ObjectId, ref : 'UserModel'},
 		dateCreated : {type : Date, default: Date.now()},
 		createdBy: {type:String},
-		restaurant : {type : mongoose.Schema.Types.ObjectId, ref : 'RestaurantModel'}
+		//restaurant : {type : mongoose.Schema.Types.ObjectId, ref : 'RestaurantModel'}
+		restaurant : {type:String}, //name of the restaurant reviewed
+		_restaurant : {type : mongoose.Schema.Types.ObjectId, ref : 'RestaurantModel'}
 
 	},{collection : 'review'});
 

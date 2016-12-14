@@ -13,7 +13,8 @@
        "findRestaurantBySearchQuery" :findRestaurantBySearchQuery,
        "login" :login,
        "updateUser" :updateUser,
-       "logout" : logout
+       "logout" : logout,
+       "findReviewsForUser" :findReviewsForUser
 	    /* "findUserById" : findUserById,
        "findUserByUsername" : findUserByUsername,
        "findUserByCredentials" :findUserByCredentials,
@@ -40,6 +41,11 @@
        headers: {'accept':'application/json',
        'user_key' : 'dc3be5dcf2c4e2ad49f30f45c3930ee0'}
     });*/
+  }
+
+  function findReviewsForUser(userId){
+    var url = "/api/review/user/" + userId;
+    return $http.get(url);
   }
 
   function findCurrentUser(){

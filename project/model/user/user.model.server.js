@@ -13,6 +13,7 @@ module.exports = function(){
 		findUserByUsername : findUserByUsername,
 		findWebsitesForUser : findWebsitesForUser,
 		deleteUser :deleteUser,
+		findReviewsByUser :findReviewsByUser,
 		setModel :setModel
 };
 	return api;
@@ -62,6 +63,13 @@ module.exports = function(){
 			username : username,
 			password : password
 		});
+	}
+
+	function findReviewsByUser(userId){
+		return UserModel.findById(userId)
+			.then(function(user){
+				return user.reviews;
+			});
 	}
 
 	function findWebsitesForUser(userId){

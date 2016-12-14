@@ -40,6 +40,11 @@ angular
 			controller : "RestaurantController",
 			controllerAs : "model"
 			})
+			.when('/restaurant/:rid/reviews',{
+			templateUrl : "/project/views/hotel/reviews.view.html",
+			controller : "RestaurantController",
+			controllerAs : "model"
+			})
 			/*.when('/restaurant/:rid',{
 			templateUrl : "/project/views/hotel/restaurant-details.view.html",
 			controller : "HotelController",

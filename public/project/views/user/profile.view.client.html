@@ -57,20 +57,22 @@
             <div class="col-sm-8 category-cards">
               <div class="fluid card">
                 <h4>My Published Reviews</h4>
+                <div ng-repeat ="review in model.reviewList">
                 <div class="row">
 
                   <div class="fluid card user-review">
-                    <h5><b>Gourmet Dumpling Kitchen</b></h5>
-                    <h6>Hello. This is my webdev page</h6>
+                    <h5><b>{{review.restaurant}}</b></h5>
+                    <h6>{{review.review}}</h6>
                   </div>
                 </div>
                 <br>
-                <div class="row">
+              </div>
+                <!--<div class="row">
 
                   <div class="fluid card user-review">
                     <h6>Hello. This is my webdev page</h6>
                   </div>
-                </div>
+                </div>-->
 
                </div>
             </div>

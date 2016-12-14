@@ -1,0 +1,78 @@
+ <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="profile-header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/homepage/{{model.user._id}}">
+                Foodster
+            </a>
+            <p class="navbar-text pull-right">
+                Welcome {{model.user.username}}
+            </p>
+        </div>
+    </div>
+</div>
+</nav>
+
+<div class="container">
+ <div class="row content">
+
+    <div class="col-sm-10 text-left">
+        <br>
+        <div class="row restaurant-image">
+            <img src="{{model.restaurant.thumb}}" class="img-rounded" height="100%" width="100%">
+
+        </div>
+        <div class="row">
+            <div class="col-sm-7">
+                <h3>{{model.restaurant.name}}</h3>
+                <h5>{{model.restaurant.location.locality}}</h5>
+                
+            </div>
+            <div class="col-sm-3">
+                <h3>Rating</h3>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+
+            </div>
+            <hr>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="fluid card">
+                <div class="col-md-10">
+                 <a class="btn btn-success btn-md" href="#/restaurant/{{model.restaurant.id}}">Details</a>
+                </div>
+                
+            </div>
+        </div>
+        <br><br>
+<div class="row category-cards">
+            <div class="fluid card">
+                <p><h4>Reviews</h4></p><hr>
+                <div ng-repeat ="review in model.reviewList">
+                <div class="row">
+                    <div col="col-sm-2">
+                    
+                    </div>
+                    <div class="col-sm-8">
+                    <!--<img src = "https://b.zmtcdn.com/data/pictures/chains/8/16774318/a54deb9e4dbb79dd7c8091b30c642077_featured_thumb.png" class="profile"/>-->
+                    <h4>{{review.createdBy}}</h4>
+                    <h5>{{review.restaurant}}</h5>
+                    <p>{{review.review}}</p>
+                    </div>
+                </div>
+                <br>
+                </div>
+                        
+                <br><br>
+               <!-- <div class="row review">
+                  
+                </div>-->
+                    
+                
+            </div>
+        </div>

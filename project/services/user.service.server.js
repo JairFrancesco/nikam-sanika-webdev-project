@@ -33,6 +33,7 @@ module.exports = function(app,model){
     app.post('/api/logout',logout);
     app.post('/api/register',register);
     app.post("/api/upload", upload.single('myFile'), uploadImage);
+    app.get("/api/review/user/:userId", findReviewsForUser);
 
     //app.get('/auth/google',passport.authenticate('google', { scope : ['profile', 'email'] }));
     app.get   ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
@@ -105,6 +106,18 @@ module.exports = function(app,model){
                     if (err) { return done(err); }
                 }
             );
+
+    }
+
+    function findReviewsForUser(req,res){
+      var userId = req.params.userId;
+      model.userModel.findReviewsByUser(userId)
+        .then(function(reviews){
+          res.json(reviews);
+        },
+        function(error){
+          res.sendStatus(400).send(err);
+        });
 
     }
 

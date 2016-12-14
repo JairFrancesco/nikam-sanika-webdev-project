@@ -8,7 +8,9 @@
       	var api = {
       		"findRestaurantDetailsById" : findRestaurantDetailsById,
           "createUserReview" : createUserReview,
-          "createRestaurant" :createRestaurant
+          "createRestaurant" :createRestaurant,
+          "findAllReviews" :findAllReviews,
+          "findReviewById" :findReviewById
       	};
       	return api;
       	
@@ -23,7 +25,8 @@
 
           var url = '/api/'+userId+'/'+restaurantId+'/review';
           var userReview ={
-            'review' : review 
+            'review' : review,
+            //'restaurant' : restaurantName
           };
            console.log(url);
           return $http.post(url,userReview);
@@ -40,6 +43,17 @@
           };
 
           return $http.post(url,restaurantObj);
+        }
+
+        function findAllReviews(restaurantId){
+          var url ="/api/"+restaurantId+"/reviews";
+
+          return $http.get(url);
+        }
+
+        function findReviewById(reviewId){
+          var url = "/api/review/" + reviewId;
+          return $http.get(url);
         }
 
       }

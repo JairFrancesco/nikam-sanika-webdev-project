@@ -107,9 +107,10 @@
 
 
 
-    function ProfileController($routeParams,$location,UserService) {
+    function ProfileController($routeParams,$location,UserService,RestaurantService) {
     	var vm = this;
         vm.logout = logout;
+        var userId = $routeParams.uid;
 
        // vm.userId = $routeParams.uid;
         function init() {
@@ -127,6 +128,29 @@
             .error(function(){
 
             });
+
+            var reviewListPromise = UserService.findReviewsForUser(userId);
+            var reviewList = [];
+            reviewListPromise
+                .success(function(reviews){
+                    console.log(reviews);
+                    for(var r in reviews){
+                        RestaurantService.findReviewById(reviews[r])
+                            .success(function(review){
+                                console.log("found one review");
+                                console.log(review);
+                                reviewList.push(review);
+                            })
+                            .error(function(){
+                                console.log("Something went wrong");
+                            });
+                    }
+
+                    vm.reviewList = reviewList;
+                })
+                .error(function(){
+                    console.log("Did not find reviews");
+                });
         }
         init();
 
