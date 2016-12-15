@@ -1,0 +1,96 @@
+ <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="profile-header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/homepage">
+                Foodster
+            </a>
+            <p class="navbar-text pull-right">
+                Welcome <a href="#/profile/{{model.user._id}}">{{model.user.username}}</a>
+                &nbsp;&nbsp;<a ng-click="model.logout()">Logout</a>
+            </p>
+        </div>
+    </div>
+</div>
+</nav>
+
+
+<div class="container">
+
+    <div class="row category-cards">
+      <div class="col-sm-12 fluid">
+        <div class="fluid card">
+          <div class="row">
+            <div class="col-sm-3 display-pic">
+              <img src="{{model.user.imageUrl}}" class="img-thumbnail"></img>
+            </div>
+
+            <div class="col-sm-9 text-left">
+
+             
+             <h3>{{model.user.fullName}}</h3>
+             
+             <p>@{{model.user.username}}</p>
+
+             <p>{{model.user.about}}</p>
+             <p>{{model.user.role}}</p>
+             <a href="#/user/{{model.user._id}}" class="btn btn-warning btn-xs">Update Profile</a>
+            </div>
+
+          </div>
+
+          
+
+        </div>
+
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+            <div class="col-sm-3 category-cards">
+               <div class="fluid card">
+              <h4>Foodster User List</h4>
+              <div ng-repeat ="user in model.users">
+                <div class="row">
+
+                  <div class="fluid card user-review">
+
+                    <h5><b>{{user.fullName}}</b></h5>&nbsp;&nbsp;&nbsp;
+                     <a ng-click = "model.deleteUser(user._id)" class = "btn btn-danger btn-xs pull-right">Remove</a>
+                  </div>
+                </div>
+                <br>
+              </div>
+                
+               </div>
+
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-8 category-cards">
+              <div class="fluid card">
+                <h4>Foodster Published Reviews</h4>
+                <div ng-repeat ="review in model.reviewList">
+                <div class="row">
+
+                  <div class="fluid card user-review">
+                    <span class="glyphicon glyphicon-remove pull-right"></span>
+                    <h5><b>{{review.restaurant}}</b></h5>
+                    <h6>{{review.review}}</h6>
+                  </div>
+                </div>
+                <br>
+              </div>
+                <!--<div class="row">
+
+                  <div class="fluid card user-review">
+                    <h6>Hello. This is my webdev page</h6>
+                  </div>
+                </div>-->
+
+               </div>
+            </div>
+          </div>
+
+    
+</div>
+

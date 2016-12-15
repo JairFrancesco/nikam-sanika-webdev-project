@@ -6,8 +6,9 @@
                 Foodster
             </a>
             <p class="navbar-text pull-right">
-                Welcome <a href="#/profile/{{model.user._id}}">{{model.user.username}}</a>
-                &nbsp;&nbsp;<a ng-click="model.logout()">Logout</a>
+                Welcome <a href="#/profile/{{model.user._id}}">{{model.user.username}}</a> 
+                &nbsp;|&nbsp;<a ng-click="model.logout()">Logout</a>&nbsp;|&nbsp;
+                <a ng-show="model.user.role == 'ADMIN'" href="#/admin">Admin Page</a>
             </p>
         </div>
     </div>

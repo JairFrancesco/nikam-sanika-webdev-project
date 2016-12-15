@@ -8,7 +8,8 @@ module.exports = function(){
 		setModel :setModel,
 		createUserReview : createUserReview,
 		findReviewsByRestaurant : findReviewsByRestaurant,
-		findReviewById :findReviewById
+		findReviewById :findReviewById,
+		findAllReviews : findAllReviews
 	};
 	return api;
 
@@ -88,6 +89,12 @@ module.exports = function(){
 			});
 	}
 
+	function findAllReviews(){
+		console.log("In find all reviews model");
+		return ReviewModel.find({
+			'role' : 'CUSTOMER'
+		});
+	}
 
 	function findReviewsByRestaurant(restaurantName){
 

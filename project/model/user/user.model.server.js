@@ -16,6 +16,8 @@ module.exports = function(){
 		findReviewsByUser :findReviewsByUser,
 		followUser : followUser,
 		findAllFollowers :findAllFollowers,
+		findAllRegisteredUsers : findAllRegisteredUsers,
+		deleteUserAndReviews : deleteUserAndReviews,
 		setModel :setModel
 };
 	return api;
@@ -55,6 +57,12 @@ module.exports = function(){
 					console.log("Some thing wrong in model followers");
 					console.log(error);
 				})
+	}
+
+	function findAllRegisteredUsers(){
+		return UserModel.find({
+			'role' : 'CUSTOMER'
+		});
 	}
 
 	function createUser(user){
@@ -118,6 +126,13 @@ module.exports = function(){
 		return UserModel.remove({
 			_id :userId
 		});
+	}
+
+	function deleteUserAndReviews(userId){
+		/*return UserModel.findById(userId)
+			.then(function(userObj){
+				model.
+			})*/
 	}
 
 };

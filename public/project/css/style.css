@@ -41,6 +41,15 @@ input.form-control {
     color:#00b300;
 }
 
+.glyphicon.glyphicon-remove{
+    color:#e60000;
+}
+.btn-danger.btn-xs{
+    margin:0px;
+}
+.user-review h5{
+    margin:0px;
+}
 .category-cards img{
     padding-top:5px;
 }

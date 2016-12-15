@@ -10,6 +10,14 @@ angular
 			controller : "LoginController",
 			controllerAs : "model"
 			})
+			.when('/admin',{
+			templateUrl : "/project/views/admin/admin.view.client.html",
+			controller : "AdminController",
+			controllerAs : "model"
+			/*resolve : {
+				checkAdmin : checkAdmin
+			}*/
+			})
 			.when('/homepage',{
 			templateUrl : "/project/views/user/homepage.view.client.html",
 			controller : "SearchController",

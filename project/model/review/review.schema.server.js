@@ -9,7 +9,8 @@ module.exports = function(){
 		createdBy: {type:String},
 		//restaurant : {type : mongoose.Schema.Types.ObjectId, ref : 'RestaurantModel'}
 		restaurant : {type:String}, //name of the restaurant reviewed
-		_restaurant : {type : mongoose.Schema.Types.ObjectId, ref : 'RestaurantModel'}
+		_restaurant : {type : mongoose.Schema.Types.ObjectId, ref : 'RestaurantModel'},
+		role:{type:String, default:'CUSTOMER',enum: ['ADMIN','CUSTOMER']}
 
 	},{collection : 'review'});
 
