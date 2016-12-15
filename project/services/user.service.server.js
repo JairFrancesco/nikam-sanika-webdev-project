@@ -118,7 +118,7 @@ module.exports = function(app,model){
           res.json(reviews);
         },
         function(error){
-          res.sendStatus(400).send(err);
+          res.sendStatus(400).send(error);
         });
 
     }
@@ -127,7 +127,31 @@ module.exports = function(app,model){
       var followerId = req.body.followerId;
       var followingId = req.body.followingId;
 
-      model.userModel.followUser(followerId,followingId)
+      model.userModel.findAllFollowers(followingId)
+        .then(function(followers){
+          for(var f in followers){
+            if(followers[f] == followerId){
+              res.send('0');
+              break;
+            }
+            else{
+              return model.userModel.followUser(followerId,followingId);
+            }
+          }
+        },
+        function(error){
+          res.sendStatus(400).send(error);
+        })
+        .then(function(followingObj){
+          console.log("FOLLOWING OBJ");
+          console.log(followingObj);
+          res.json(followingObj.followers);
+        },
+        function(error){
+          res.sendStatus(400).send(error);
+        });
+
+      /*model.userModel.followUser(followerId,followingId)
         .then(function(followingObj){
           console.log("FOLLOWING OBJ");
           console.log(followingObj);
@@ -135,7 +159,7 @@ module.exports = function(app,model){
         },
         function(error){
           res.sendStatus(400).send(err);
-        })
+        });*/
     }
 
     function findAllFollowers(req,res){
@@ -147,7 +171,7 @@ module.exports = function(app,model){
           res.json(followers);
         },
         function(error){
-          res.sendStatus(400).send(err);
+          res.sendStatus(400).send(error);
         });
     }
 

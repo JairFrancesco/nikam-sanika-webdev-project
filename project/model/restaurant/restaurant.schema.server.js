@@ -9,6 +9,9 @@ module.exports = function(){
 		locality : {type:String},
 		reviews : [{type : mongoose.Schema.Types.ObjectId, ref:'ReviewModel'}], 
 		dateCreated : {type : Date, default: Date.now()},
+		address : {type:String},
+		cost : {type:String},
+		imageUrl : {type:String}
 		//createdBy: {type:String}
 		//restaurant : {type : mongoose.Schema.Types.ObjectId, ref : 'RestaurantModel'},
 

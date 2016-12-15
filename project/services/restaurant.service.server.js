@@ -4,6 +4,8 @@ module.exports = function(app,model){
 	app.post('/api/restaurant', createRestaurant);
 	app.get('/api/:restId/reviews', findAllReviews);
 	app.get('/api/review/:reviewId',findReviewById);
+	app.get('/api/restaurant/:restId',findRestaurantDetails);
+
 
 	function createUserReview(req,res){
 
@@ -55,6 +57,20 @@ module.exports = function(app,model){
 
 		
 
+	}
+
+	function findRestaurantDetails(req,res){
+		var restaurantId = req.params.restId;
+
+		model.restaurantModel.findRestaurantByZomatoId(restaurantId)
+			.then(function(restaurantObj){
+				console.log("FOUND THE REST DETAILS FROM DB");
+				console.log(restaurantObj);
+				res.json(restaurantObj);
+			},
+			function(error){
+				res.sendStatus(400).send(error);
+			});
 	}
 
 	function findAllReviews(req,res){

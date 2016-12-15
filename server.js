@@ -1,4 +1,5 @@
 var express = require('express');
+var cors = require('cors');
 var app = express();
 var test;
 
@@ -10,6 +11,7 @@ app.use(bodyParser.text({ type: 'text/html' }))
 
 // configure a public directory to host static content
 app.use(express.static(__dirname + '/public'));
+app.use(cors());
 
 //require ("./test/app.js")(app);
 require("./project/app.js")(app);

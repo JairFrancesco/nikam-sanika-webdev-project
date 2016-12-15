@@ -10,7 +10,8 @@
           "createUserReview" : createUserReview,
           "createRestaurant" :createRestaurant,
           "findAllReviews" :findAllReviews,
-          "findReviewById" :findReviewById
+          "findReviewById" :findReviewById,
+          "findRestaurantDetails" : findRestaurantDetails
       	};
       	return api;
       	
@@ -21,6 +22,10 @@
             return $http.get(url);
       	}
 
+        function findRestaurantDetails(restaurantId){
+          var url = "/api/restaurant/" + restaurantId;
+          return $http.get(url);
+        }
         function createUserReview(userId,restaurantId,review){
 
           var url = '/api/'+userId+'/'+restaurantId+'/review';
@@ -39,7 +44,10 @@
             'name' : restaurant.name,
             'cuisine' :restaurant.cuisines,
             'locality' : restaurant.location.locality,
-            'zomatoId' : restaurant.id
+            'zomatoId' : restaurant.id,
+            'address' : restaurant.location.address,
+            'cost' : restaurant.average_cost_for_two,
+            'imageUrl' : restaurant.thumb
           };
 
           return $http.post(url,restaurantObj);

@@ -31,8 +31,56 @@
             });
 
             //to call the details service when the page loads
+            var restaurantPromise;
+            RestaurantService.findRestaurantDetails(restaurantId)
+                .success(function(restaurant){
+                    if(restaurant){
+                        console.log("FOUND restaurant in DB");
+                        vm.restaurant = restaurant;
+                    }
+                    else{
+                        console.log("now calling zomato service");
+                        restaurantPromise = RestaurantService.findRestaurantDetailsById(restaurantId);
+                        restaurantPromise
+                            .success(function(restaurant){
+                                console.log(restaurant);
+                                var restaurantObj = {
+                                    'name' : restaurant.name,
+                                    'cuisine' :restaurant.cuisines,
+                                    'locality' : restaurant.location.locality,
+                                    'zomatoId' : restaurant.id,
+                                    'address' : restaurant.location.address,
+                                    'cost' : restaurant.average_cost_for_two,
+                                    'imageUrl' : restaurant.thumb
+                                };
+                                vm.restaurant = restaurantObj;
+                                restaurantName = restaurant.name;
+                                console.log("Inserted hotel");
+                                //store this restaurant in local DB
+                                RestaurantService.createRestaurant(restaurant)
+                                    .success(function(response){
+                                    console.log(response);
+                                    if(response != 'OK'){
+                                        console.log("Inserted hotel successfully");
+                                    }
+                                    else{
+                                        console.log("Hotel already present");
+                                    }
+                                }) 
+                                .error(function(){
 
-        	var restaurantPromise = RestaurantService.findRestaurantDetailsById(restaurantId);
+                                });
+                            })
+                            .error(function(){
+
+                            });
+                    }
+                })
+                .error(function(){
+                    console.log("SOMETHING WENT WRONG");
+                });
+
+        	/*var restaurantPromise = RestaurantService.findRestaurantDetailsById(restaurantId);
 
         	restaurantPromise
         		.success(function(restaurant){
@@ -57,7 +105,7 @@
         		})
         		.error(function(){
 
-        		});
+        		});*/
         	
             var reviewListPromise = RestaurantService.findAllReviews(restZomatoId);
             var reviewList = [];

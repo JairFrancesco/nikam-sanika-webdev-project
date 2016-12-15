@@ -19,13 +19,14 @@
     <div class="col-sm-10 text-left">
         <br>
         <div class="row restaurant-image">
-            <img src="{{model.restaurant.thumb}}" class="img-rounded" height="100%" width="100%">
+            <img src="{{model.restaurant.imageUrl}}" class="img-rounded" height="100%" width="100%">
 
         </div>
         <div class="row">
             <div class="col-sm-7">
                 <h3>{{model.restaurant.name}}</h3>
-                <h5>{{model.restaurant.location.locality}}</h5>
+                <!--<h5>{{model.restaurant.location.locality}}</h5>-->
+                <h5>{{model.restaurant.locality}}</h5>
                 
             </div>
             <div class="col-sm-3">
@@ -46,7 +47,7 @@
         <div class="row">
             <div class="fluid card">
                 <div class="col-md-10">
-                 <a class="btn btn-success btn-md" href="#/restaurant/{{model.restaurant.id}}/reviews">Reviews</a>
+                 <a class="btn btn-success btn-md" href="#/restaurant/{{model.restaurant.zomatoId}}/reviews">Reviews</a>
                 </div>
                 
             </div>
@@ -66,11 +67,13 @@
 
                     <div class="row">
                         <h4>Cuisines</h4>
-                        <p>{{model.restaurant.cuisines}}</p>
+                        <!--<p>{{model.restaurant.cuisines}}</p>-->
+                         <p>{{model.restaurant.cuisine}}</p>
                     </div>
                     <div class="row">
                         <h4>Cost</h4>
-                        <p>{{model.restaurant.currency}}{{model.restaurant.average_cost_for_two}} for 2</p>
+                        <!--<p>${{model.restaurant.average_cost_for_two}} for 2</p>-->
+                        <p>${{model.restaurant.cost}} for 2</p>
                     </div>
                 </div>
 
@@ -81,7 +84,8 @@
                     </div>
                     <div class="row">
                         <h4>Address</h4>
-                       <p>{{model.restaurant.location.address}}</p>
+                       <!--<p>{{model.restaurant.location.address}}</p>-->
+                       <p>{{model.restaurant.address}}</p>
                     </div>
                     
                 </div>
@@ -107,7 +111,7 @@
                         <input type="text" placeholder="Write a review  for {{model.restaurant.name}}..." class="form-control" ng-model="model.review">
                     </div>
                     <div class="col-sm-3">
-                        <button class="btn btn-danger btn-block" ng-click = "model.createReview(model.user._id,model.restaurant.id,model.review)">Publish Review</button>
+                        <button class="btn btn-danger btn-block" ng-click = "model.createReview(model.user._id,model.restaurant.zomatoId,model.review)">Publish Review</button>
                     </div>
                 </div>
 
