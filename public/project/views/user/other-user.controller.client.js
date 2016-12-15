@@ -6,7 +6,7 @@
         function OtherUserController($location,$routeParams,UserService,RestaurantService){
         	var vm = this;
         	var userId = $routeParams.uid;
-
+        	vm.logout = logout;
         	function init() {
         	console.log("Reached rest controller");
         	var restaurantName;
@@ -129,6 +129,14 @@
         		.error(function(){
 
         		});
+        }
+
+        function logout(){
+            UserService.logout()
+                .success(function(){
+                    //$rootScope.currentUser = null;
+                    $location.url("/login");
+                });
         }
      }
 

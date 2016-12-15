@@ -9,6 +9,7 @@
         	var restaurantId = $routeParams.rid;
             vm.createReview = createReviewByUser;
             var restZomatoId = $routeParams.rid;
+            vm.logout = logout;
             console.log(restaurantId);
         	//vm.getRestaurantDetails = getRestaurantDetails;
 
@@ -150,6 +151,15 @@
                         console.log("In error");
                     });
            }
+
+
+           function logout(){
+            UserService.logout()
+                .success(function(){
+                    //$rootScope.currentUser = null;
+                    $location.url("/login");
+                });
         }
+    }
 
 })();

@@ -93,6 +93,8 @@
                 
             }
             else{*/
+                //default pic
+                user.imageUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSp5VUcMJyRB9rOmmPyb8laq0gbbA5M_1rS5p-6IP5imXUQAUGNXtn5DIE";
                UserService.register(user)
                 .success(function(user){
                     $rootScope.currentUser = user;
@@ -239,7 +241,7 @@
     function HomepageController($routeParams,$location,UserService){
     	var vm = this;
     	vm.search = search;
-
+        vm.logout = logout;
     	function init() {
            // vm.user = UserService.findUserById(vm.userId);
            var promise = UserService.findCurrentUser();
@@ -261,12 +263,20 @@
     	function search(query){
     		$location.url('/search/'+query);
     	}
+
+        function logout(){
+            UserService.logout()
+                .success(function(){
+                    //$rootScope.currentUser = null;
+                    $location.url("/login");
+                });
+        }
     }
 
     function SearchController($routeParams,$location,UserService){
     	var vm = this;
     	var query = $routeParams.query;
-    	
+    	vm.logout = logout;
     	vm.checkSafeImageUrl = checkSafeImageUrl;
         vm.getRestaurantDetails = getRestaurantDetails;
 
@@ -311,6 +321,14 @@
 
             //console.log("inside get restaurant controller");
             $location.url("/restaurant/"+restaurantId);
+        }
+
+        function logout(){
+            UserService.logout()
+                .success(function(){
+                    //$rootScope.currentUser = null;
+                    $location.url("/login");
+                });
         }
 
     	/*function search(query){
