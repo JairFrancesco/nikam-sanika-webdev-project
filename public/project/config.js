@@ -77,6 +77,14 @@ angular
 				checkLogin: checkLogin
 			}*/
 			})
+			.when('/user',{
+			templateUrl : "/project/views/user/update.profile.view.client.html",
+			controller : "ProfileController",
+			controllerAs : "model"
+			/*resolve : {
+				checkLogin: checkLogin
+			}*/
+			})
 			.otherwise({
 			redirectTo : "/homepage"
 		});
