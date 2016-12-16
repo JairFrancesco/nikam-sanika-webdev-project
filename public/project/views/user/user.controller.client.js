@@ -22,7 +22,7 @@
                     }
                     else{
                         $rootScope.currentUser = user;
-                        $location.url("user/" + user._id);
+                        $location.url("/homepage/" + user._id);
                     }
                 })
                 .error(function(){

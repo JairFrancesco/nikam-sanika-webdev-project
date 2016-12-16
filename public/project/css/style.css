@@ -28,7 +28,7 @@ input.form-control {
     background-color: #ffffff;
     /*margin-right:10px;*/
     border-radius: 10px;
-    overflow: auto;
+    overflow: hidden;
     padding-left:10px;
 
 }
