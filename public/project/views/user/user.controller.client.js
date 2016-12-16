@@ -8,11 +8,12 @@
         .controller("ProfileController", ProfileController);
 
 
-    function LoginController($location,$rootScope,UserService) {
+    function LoginController($location,$rootScope,$scope,UserService) {
     	var vm = this;
         vm.login = login;
         function login(username,password){
-
+            console.log("entered login");
+            if(!$scope.login.$invalid){
             var promise = UserService.login(username,password);
                 promise
                 .success(function(user){
@@ -25,8 +26,10 @@
                     }
                 })
                 .error(function(){
-
+                    console.log("in error");
+                    vm.alert = "No such user";
                 });
+            }
             //var promise = UserService.findUserByCredentials(username,password);
            /* if(username == null){
                 if(password == null){
@@ -55,7 +58,7 @@
            }
     }
 
-    function RegisterController($location,$rootScope,UserService) {
+    function RegisterController($location,$scope,$rootScope,UserService) {
     	var vm = this;
         vm.register = register;
 
@@ -94,12 +97,18 @@
             }
             else{*/
                 //default pic
-                user.imageUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSp5VUcMJyRB9rOmmPyb8laq0gbbA5M_1rS5p-6IP5imXUQAUGNXtn5DIE";
+                
+                 if(!$scope.register.$invalid && vm.user.password == vm.user.verifyPassword){
+                    user.imageUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSp5VUcMJyRB9rOmmPyb8laq0gbbA5M_1rS5p-6IP5imXUQAUGNXtn5DIE";
+
                UserService.register(user)
                 .success(function(user){
                     $rootScope.currentUser = user;
                     $location.url("/homepage/"+ user._id);
                 }); 
+            }else{
+                vm.verifyAlert = "Password and verify password must match";
+            }
            // }
 
         }

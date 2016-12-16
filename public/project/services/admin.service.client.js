@@ -7,7 +7,7 @@
 
       	var api = {
       		"findAllRegisteredUsers" : findAllRegisteredUsers,
-      		"findAllReviews" : findAllReviews,
+      		"findAllCustomerReviews" : findAllCustomerReviews,
                   "deleteUser" : deleteUser
       	};
 
@@ -18,14 +18,15 @@
       		return $http.get(url);
       	}
 
-      	function findAllReviews(){
-      		var url = "/api/admin/reviews";
+      	function findAllCustomerReviews(userId){
+                  console.log("in find all reviews client service");
+      		var url = "/api/"+userId+"/reviews";
       		return $http.get(url);
       	}
 
 
             function deleteUser(userId){
-
+                  console.log("Entered delete uer client service with userId" + userId);
                   var url = "/api/user/" + userId + "/delete";
                   return $http.delete(url);
             }

@@ -223,12 +223,15 @@ module.exports = function(app,model){
       // username = user.username;
       // password = user.password;
       //console.log([username,password]);
+      console.log("inside local strategy");
       model.userModel.findUserByUsername(username)
             .then(function(user){
               if(user && bcrypt.compareSync(password, user.password)){
+                console.log("in local strategy success");
                 return done(null,user);
                   // res.send(user[0]);
                 }else{
+                  console.log("in local strategy error");
                   return done(null,false);
                 }
                 

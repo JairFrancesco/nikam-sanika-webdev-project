@@ -9,7 +9,7 @@ module.exports = function(){
 		createUserReview : createUserReview,
 		findReviewsByRestaurant : findReviewsByRestaurant,
 		findReviewById :findReviewById,
-		findAllReviews : findAllReviews
+		findAllCustomerReviews : findAllCustomerReviews
 	};
 	return api;
 
@@ -65,7 +65,7 @@ module.exports = function(){
 									restaurantObj.reviews.push(reviewObject);
 									restaurantObj.save();
 									reviewObject._user = userObject._id;
-									reviewObject.createdBy = userObject.fullName;
+									reviewObject.createdBy = userObject.username;
 									reviewObject.restaurant = restaurantObj.name;
 									reviewObject._restaurant = restaurantObj._id;
 									reviewObject.save();
@@ -89,11 +89,16 @@ module.exports = function(){
 			});
 	}
 
-	function findAllReviews(){
-		console.log("In find all reviews model");
-		return ReviewModel.find({
-			'role' : 'CUSTOMER'
-		});
+	function findAllCustomerReviews(userRole){
+		console.log("In find all reviews model with role as " + userRole);
+		/*return ReviewModel.find({
+			'role' : userRole
+		});*/
+
+		return model.userModel.findUserById(userId)
+			.then(function(user){
+				return user.reviews;
+			})
 	}
 
 	function findReviewsByRestaurant(restaurantName){

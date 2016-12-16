@@ -1,6 +1,6 @@
 module.exports = function(app,model){
 	app.get("/api/admin/users",findAllRegisteredUsers);
-	app.get("/api/admin/reviews",findAllReviews);
+	app.get("/api/:userId/reviews",findAllCustomerReviews);
 	app.delete("/api/user/:userId/delete",deleteUser);
 
 	function findAllRegisteredUsers(req,res){
@@ -15,10 +15,11 @@ module.exports = function(app,model){
 			});
 	}
 
-	function findAllReviews(req,res){
-		console.log(model);
+	function findAllCustomerReviews(req,res){
+		//console.log(model);
 		console.log("IN FIND ALL REVIEWS");
-		model.reviewModel.findAllReviews()
+		var userId = req.params.userId;
+		model.reviewModel.findAllCustomerReviews(userId)
 			.then(function(reviews){
 				console.log("Found reviews for admin");
 				console.log(reviews);
@@ -30,12 +31,16 @@ module.exports = function(app,model){
 	}
 
 	function deleteUser(req,res){
+
 		var userId = req.params.userId;
 		model.userModel.deleteUser(userId)
 			.then(function(status){
-				res.send(200);
+		 		console.log("Entered delete uer sever service with status" + status);
+
+				res.send("OK");
 			},
 			function(error){
+				console.log("Entered delete uer sever service with error");
 				res.sendStatus(400).send(error);
 			});
 	}

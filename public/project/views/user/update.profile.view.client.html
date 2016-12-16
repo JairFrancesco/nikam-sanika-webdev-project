@@ -7,8 +7,8 @@
             </a>
             <p class="navbar-text pull-right">
                 Welcome <a href="#/profile/{{model.user._id}}">{{model.user.username}}</a> 
-                &nbsp;|&nbsp;<a ng-click="model.logout()">Logout</a>&nbsp;|&nbsp;
-                <a ng-show="model.user.role == 'ADMIN'" href="#/admin">Admin Page</a>
+                &nbsp;|&nbsp;<a ng-click="model.logout()">Logout</a>&nbsp;&nbsp;
+                <a ng-show="model.user.role == 'ADMIN'" href="#/admin/{{model.user._id}}"> | Admin Page</a>
             </p>
         </div>
     </div>

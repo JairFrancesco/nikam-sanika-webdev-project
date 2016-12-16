@@ -10,7 +10,7 @@ angular
 			controller : "LoginController",
 			controllerAs : "model"
 			})
-			.when('/admin',{
+			.when('/admin/:uid',{
 			templateUrl : "/project/views/admin/admin.view.client.html",
 			controller : "AdminController",
 			controllerAs : "model"

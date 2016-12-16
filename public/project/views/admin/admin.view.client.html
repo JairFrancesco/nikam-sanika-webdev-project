@@ -47,7 +47,7 @@
     </div>
     <br><br>
     <div class="row">
-            <div class="col-sm-3 category-cards">
+            <div class="col-sm-12 category-cards">
                <div class="fluid card">
               <h4>Foodster User List</h4>
               <div ng-repeat ="user in model.users">
@@ -55,7 +55,7 @@
 
                   <div class="fluid card user-review">
 
-                    <h5><b>{{user.fullName}}</b></h5>&nbsp;&nbsp;&nbsp;
+                    <h5><b>{{user.username}}</b></h5>&nbsp;&nbsp;&nbsp;
                      <a ng-click = "model.deleteUser(user._id)" class = "btn btn-danger btn-xs pull-right">Remove</a>
                   </div>
                 </div>
@@ -65,11 +65,12 @@
                </div>
 
             </div>
-            <div class="col-sm-1"></div>
+          </div>
+            <!--<div class="col-sm-1"></div>
             <div class="col-sm-8 category-cards">
               <div class="fluid card">
                 <h4>Foodster Published Reviews</h4>
-                <div ng-repeat ="review in model.reviewList">
+                <div ng-repeat ="review in model.reviewsList">
                 <div class="row">
 
                   <div class="fluid card user-review">
@@ -85,11 +86,11 @@
                   <div class="fluid card user-review">
                     <h6>Hello. This is my webdev page</h6>
                   </div>
-                </div>-->
+                </div>//
 
                </div>
             </div>
-          </div>
+          </div>-->
 
     
 </div>

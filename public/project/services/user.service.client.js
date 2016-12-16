@@ -87,6 +87,7 @@
   }
 
   function login(username,password){
+    console.log("entered login service");
     var user = {
       username : username,
       password : password

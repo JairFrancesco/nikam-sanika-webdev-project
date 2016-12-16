@@ -32,7 +32,21 @@ input.form-control {
     padding-left:10px;
 
 }
+.ng-submitted.ng-invalid{
+        border-color: red;
+      }
+.ng-submitted .ng-invalid{
+    border-color: red;
+    }
 
+form{
+    padding:10px;
+     }
+      .error{
+
+        color:red;
+        margin-bottom:10px;
+      }
 .category-cards p{
     padding-left:10px;
     padding-top:5px;
@@ -155,6 +169,16 @@ body {
     
     
 }
+
+.register{
+   margin-bottom: 20px;
+    
+}
+
+#register {
+    color:#cc0227;
+}
+
 .test{
     display:block;
     width:100%;

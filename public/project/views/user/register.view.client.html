@@ -5,62 +5,73 @@
             <a class="navbar-brand" href="#/login">
                 Foodster
             </a>
-            <p class="navbar-text pull-right">
-                <a ng-click = "model.updateUser()" class="navbar-link">
-          Register
-                </a>
-            </p>
+            
         </div>
     </div>
 </div>
 </nav>
+<div ng-show="register.$invalid && register.$submitted || model.verifyAlert" class="alert alert-danger">
+        There were errors in your form. Please fix them in order proceed.
+     <ul>
+
+          <li ng-show="register.username.$invalid && register.$submitted">Username is required</li>
+          <li ng-show="register.password.$invalid && register.$submitted">Password is required</li>
+          <li ng-show="register.verifyPassword.$invalid && register.$submitted">Verify Password is required</li>
+          <!--<li ng-show="model.verifyAlert">{{model.verifyAlert}}</li>-->
+         <!-- <li ng-show="(register.password != register.verifyPassword) && register.$submitted">Password and verfify password must match</li>-->
+        </ul>
+    </div>
  <div class="container ">
 
     <div class="login">
-     <div ng-show="model.alert" class="alert alert-danger">
+    <!-- <div ng-show="model.alert" class="alert alert-danger">
         {{model.alert}}
-      </div>
+      </div>-->
       <h1>Register</h1>
+       <form name="register" ng-submit="model.register(model.user)" novalidate>
        <div class="form-group">
         <label for="firstName">Your Name</label>
         <input ng-model="model.user.fullName" type="text"
-               class="form-control"
-               placeholder="Full Name" id="firstName" required/>
+               class="form-control" 
+               placeholder="Full Name" id="firstName"/>
       </div>
       
       <div class="form-group">
         <label for="username">Username</label>
         <input ng-model="model.user.username" type="text"
-               class="form-control"
+               class="form-control" name="username" 
                placeholder="username" id="username" required/>
+               <div ng-show="register.username.$invalid && register.$submitted" class="error">Username is required</div>
       </div>
+       
       <div class="form-group">
         <label for="password">Password</label>
         <input ng-model="model.user.password" type="password"
-               class="form-control"
+               class="form-control" name="password"
                placeholder="password" id="password" required/>
+               <div ng-show="register.password.$invalid && register.$submitted" class="error">Password is required</div>
       </div>
+       
+
       <div class="form-group">
         <label for="verifyPassword">Verify Password</label>
          <input ng-model="model.user.verifyPassword" type="password"
-               class="form-control"
+               class="form-control" name="verifyPassword"
                placeholder="verify password" id="verifyPassword"required/>
-      </div>
+               <div ng-show="register.verifyPassword.$invalid && register.$submitted" class="error">Verify Password is required</div>
+       <!-- <div ng-show="(register.verifyPassword != register.password) && register.$submitted" class="error">Password and verify password must match</div>
+      </div>-->
+
       <div class="form-group">
         <label for="email">Email</label>
           <input ng-model="model.user.email" type="email"
                class="form-control"
-               placeholder="example@gmail.com" id="email" required/>
+               placeholder="example@gmail.com" id="email"/>
       </div>
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-           <input ng-model="model.user.phone" type="text" id="phone"
-               class="form-control"
-               placeholder="+1-857-987-0983" required/>
-      </div>
-
-        <a class="btn btn-primary btn-block" ng-click="model.register(model.user)">Register</a>
-        
+      
+      <input type="submit"  class="btn btn-primary btn-block"  value="Register">
+        <!--<a class="btn btn-primary btn-block" ng-click="model.register(model.user)">Register</a>-->
+       </form> 
 
        
     </div>
