@@ -131,10 +131,12 @@ module.exports = function(app,model){
         .then(function(followers){
           for(var f in followers){
             if(followers[f] == followerId){
+              console.log("Already followed");
               res.send('0');
               break;
             }
             else{
+              console.log("Will follow now");
               return model.userModel.followUser(followerId,followingId);
             }
           }

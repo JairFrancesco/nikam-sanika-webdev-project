@@ -96,6 +96,7 @@
 
                 		for(var f in followersList){
                 			if(followersList[f]._id == vm.user._id){
+                                console.log("Other user followed");
                 				vm.otherUser.followed = "TRUE";
                 				break;
                 			}
@@ -116,15 +117,16 @@
         	console.log("In follow user controller");
         	followPromise
         		.success(function(followers){
-        			if(followers){
+                    $location.url("/user/" + followingId + "/profile");
+        			/*if(followers){
         				console.log("recieved followwes in follow user controller");
         				console.log(followers);
-        				
+        				$location.url("/user/" + followingId+ "/profile");
         			}
         			else{
         				console.log("No response");
-        			}
-        			$location.url("/user/" + followingId+ "/profile");
+        			}*/
+        			
         		})
         		.error(function(){
 

@@ -17,13 +17,14 @@
        "findReviewsForUser" :findReviewsForUser,
 	    "findUserById" : findUserById,
       "followUser" : followUser,
+      "checkLogin" : checkLogin,
       "findAllFollowers" : findAllFollowers
       /* "findUserByUsername" : findUserByUsername,
        "findUserByCredentials" :findUserByCredentials,
        
        "deleteUser" : deleteUser,
        
-       "checkLogin" : checkLogin,
+       
        
        "register" : register,
        

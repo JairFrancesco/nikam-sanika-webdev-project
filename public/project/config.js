@@ -19,14 +19,17 @@ angular
 			}*/
 			})
 			.when('/homepage',{
-			templateUrl : "/project/views/user/homepage.view.client.html",
+			templateUrl : "/project/views/landing/landing.page.view.client.html",
 			controller : "SearchController",
 			controllerAs : "model"
 			})
 			.when('/homepage/:uid',{
 			templateUrl : "/project/views/user/homepage.view.client.html",
 			controller : "HomepageController",
-			controllerAs : "model"
+			controllerAs : "model",
+			resolve : {
+				checkLogin: checkLogin
+			}
 			})
 			.when('/register',{
 			templateUrl : "/project/views/user/register.view.client.html",
@@ -41,7 +44,10 @@ angular
 			.when('/search/:query',{
 			templateUrl : "/project/views/hotel/hotel-search-list.view.html",
 			controller : "SearchController",
-			controllerAs : "model"
+			controllerAs : "model",
+			resolve : {
+				checkLogin: checkLogin
+			}
 			})
 			.when('/restaurant/:rid',{
 			templateUrl : "/project/views/hotel/restaurant-details.view.html",
@@ -72,8 +78,29 @@ angular
 			}*/
 			})
 			.otherwise({
-			redirectTo : "/login"
+			redirectTo : "/homepage"
 		});
+
+			function checkLogin($q, UserService, $location) {
+
+            var deferred = $q.defer();
+
+            UserService
+                .checkLogin()
+                .success(
+                    function (user) {
+                        if(user != '0') {
+                            deferred.resolve();
+                        }
+                        else {
+                            deferred.reject();
+                            $location.url("/login");
+                        }
+                    }
+                );
+
+            return deferred.promise;
+        }
 	}
 
 
